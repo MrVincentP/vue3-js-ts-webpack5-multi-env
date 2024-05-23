@@ -12,7 +12,7 @@ const os = require('os');
 
 // Get local IP address
 const interfaces = os.networkInterfaces();
-let localIpAddress; // 本地IP
+let localIpAddress;
 Object.keys(interfaces).forEach((interfaceName) => {
   interfaces[interfaceName].forEach((interfaceData) => {
     if (interfaceData.family === 'IPv4' && !interfaceData.internal) {
@@ -60,7 +60,6 @@ module.exports = (RESETENV) => {
       },
       {
         test: /\.s[ac]ss$/i,
-        // eslint禁用下一行数组括号换行
         use: [
           // Generate JS strings as style nodes
           'style-loader',
@@ -96,7 +95,6 @@ module.exports = (RESETENV) => {
         staticURL: BuildENV.staticURL,
         webURL: BuildENV.webURL,
       }),
-      /**运行成功，输出信息**/
       new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo: {
           messages: [`You application is running here http://${localIpAddress}:${BuildENV.port}`,
